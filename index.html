@@ -51,17 +51,42 @@ section{padding:88px 0}h2{font:900 clamp(34px,5vw,56px)/1 var(--disp);letter-spa
 .cta{border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,43,43,.14),transparent);padding:56px;text-align:center}
 footer{border-top:1px solid var(--line);padding:32px 0 60px;font:12px var(--mono);color:var(--mute)}
 .sig{font:italic 600 15px Georgia,serif;color:var(--ink)}
-@media(max-width:860px){.hero,.ab{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}nav .links{display:none}.cta{padding:32px 20px}}
+@media(max-width:860px){.hero,.ab{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}nav .links>a{display:none}.cta{padding:32px 20px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style></head><body>
+
+.burger{width:52px;height:52px;border:3px solid var(--ink);background:#0d0d10;cursor:pointer;display:grid;place-content:center;gap:6px;box-shadow:5px 5px 0 var(--red);transition:transform .15s,box-shadow .15s;margin-left:22px}
+.burger:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--red)}
+.burger i{display:block;width:24px;height:3px;background:var(--ink);transition:.25s}
+.burger[aria-expanded=true] i:nth-child(1){transform:translateY(9px) rotate(45deg)}.burger[aria-expanded=true] i:nth-child(2){opacity:0}.burger[aria-expanded=true] i:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:50;background:linear-gradient(160deg,#16060a 0%,#050508 60%);border-left:6px solid var(--red);display:flex;flex-direction:column;justify-content:center;padding:8vw;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.menu.open{transform:none;visibility:visible}
+.menu a{font:900 clamp(36px,7vw,84px)/1.05 var(--disp);letter-spacing:-.03em;text-decoration:none;border-bottom:3px solid var(--line);padding:10px 0;display:flex;justify-content:space-between}
+.menu a:hover,.menu a:focus-visible{color:var(--red);border-color:var(--red)}
+.menu a span{font:14px var(--mono);color:var(--mute)}
+nav{position:sticky;top:0;z-index:60;background:rgba(5,5,8,.85);backdrop-filter:blur(10px);border-bottom:3px solid var(--ink)}
+h1{text-shadow:0 2px 0 #000,6px 6px 0 rgba(255,43,43,.35)}
+.hero{border-bottom:3px solid var(--ink)}
+.clock,.score{box-shadow:10px 10px 0 var(--red),0 30px 60px rgba(0,0,0,.6);border:3px solid var(--ink)}
+.stats{border-width:3px;border-color:var(--ink);background:linear-gradient(90deg,var(--red-btn),#7a0d10)}
+.stats div{border-color:rgba(255,255,255,.25)}.stats span{color:#ffe9e9}
+.tilt{transform-style:preserve-3d;transition:transform .15s ease-out,box-shadow .2s;will-change:transform}
+.law{border:2px solid #3a3a3a;background:linear-gradient(160deg,#17171b,#0b0b0e);box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06)}
+.law:hover{transform:none;box-shadow:0 30px 60px rgba(0,0,0,.7),8px 8px 0 var(--red)}
+.law>*{transform:translateZ(30px)}
+.btn{border-width:3px;box-shadow:5px 5px 0 #000}.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #000}
+.cta{border:3px solid var(--ink);background:linear-gradient(135deg,#C81E1E,#4a0709);box-shadow:14px 14px 0 #000}
+.cta .eyebrow{color:#fff}.cta .btn.solid{background:#fff;color:#050508;border-color:#fff}.cta .btn.ghost{border-color:#fff}
+@media(prefers-reduced-motion:reduce){.tilt{transform:none!important}}
+nav .links{display:flex;align-items:center}[id]{scroll-margin-top:110px}@media(max-width:860px){.stats b{font-size:32px;white-space:nowrap}.stats div{padding:22px 16px}}</style></head><body>
 <div class="bar"><div class="wrap"><span class="dot"></span>Live · 47 AI laws tracked · California AB 1609 takes effect Jan 1, 2027</div></div>
 <div class="wrap">
-<nav><a class="logo" href="#top">DEADLINE<span>SF</span></a><div class="links"><a href="#ab1609">AB 1609 check</a><a href="#library">Law library</a><a href="https://deadlinesf.net/checkout">Audits</a><a href="https://deadlinesf.net/">deadlinesf.net</a></div></nav>
+</div><nav><div class="wrap" style="display:flex;justify-content:space-between;align-items:center;width:100%"><a class="logo" href="#top">DEADLINE<span>SF</span></a><div class="links"><a href="#ab1609">AB 1609 check</a><a href="#library">Law library</a><a href="https://deadlinesf.net/checkout">Audits</a><a href="https://deadlinesf.net/">deadlinesf.net</a><button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button></div></div></nav><div class="wrap">
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu"><a href="#ab1609">AB 1609 check <span>01</span></a><a href="#library">Law library <span>02</span></a><a href="https://deadlinesf.net/checkout">Audits <span>03</span></a><a href="https://claimfreepatch.netlify.app">Free patch <span>04</span></a><a href="https://deadlinesf.net/">deadlinesf.net <span>05</span></a></div>
 <header class="hero" id="top"><div><div class="eyebrow">AI compliance, built in San Francisco</div>
 <h1>Every AI law.<br>One <em>deadline</em> board.</h1>
 <p class="lede">DeadlineSF lists your AI systems, shows which laws apply, puts the controls in place, tests them and gives you attorney-reviewed proof. It covers 47 laws across California, other US states, federal rules and the EU.</p>
 <a class="btn solid" href="https://deadlinesf.net/ab1609">Book the AB 1609 check · $2,500</a><a class="btn ghost" href="#library">Browse the 47 laws</a></div>
-<div class="clock"><small>AB 1609 effective · Jan 1, 2027 00:00 PT</small><div class="t" id="days">--</div><small>days left to fix your customer-service chatbot</small></div></header>
+<div class="clock tilt"><small>AB 1609 effective · Jan 1, 2027 00:00 PT</small><div class="t" id="days">--</div><small>days left to fix your customer-service chatbot</small></div></header>
 <div class="stats"><div><b>47</b><span>AI laws tracked</span></div><div><b id="ineff">--</b><span>Already in effect</span></div><div><b>15 min</b><span>AB 1609 human handoff</span></div><div><b>$500M</b><span>AB 1609 revenue threshold</span></div></div>
 
 <section id="ab1609"><div class="eyebrow">California AB 1609 · Cal. Bus. &amp; Prof. Code §§ 22625–22629</div><h2>Is your chatbot ready?</h2>
@@ -73,7 +98,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 60px;font:12px var(--mono
 <label><input type="checkbox"><span>A person is reached within 15 minutes, or an appointment is set within one business day<small>§§ 22627(b)(1), 22628(c)</small></span></label>
 <label><input type="checkbox"><span>Hold times are limited and logged<small>§ 22628</small></span></label>
 <label><input type="checkbox"><span>You have dated proof of all of the above<small>DeadlineSF readiness report</small></span></label>
-</div><div><div class="score"><small class="eyebrow">Readiness</small><div class="n" id="sc">0/6</div><div class="meter"><i id="mt"></i></div><p id="msg">Each unticked box is a gap in your chatbot.</p><a class="btn solid" href="https://deadlinesf.net/ab1609">Get the full readiness check</a><p style="font:11px var(--mono);color:var(--mute)">Informational only, not legal advice. DeadlineSF is not a law firm.</p></div></div></div></section>
+</div><div><div class="score tilt"><small class="eyebrow">Readiness</small><div class="n" id="sc">0/6</div><div class="meter"><i id="mt"></i></div><p id="msg">Each unticked box is a gap in your chatbot.</p><a class="btn solid" href="https://deadlinesf.net/ab1609">Get the full readiness check</a><p style="font:11px var(--mono);color:var(--mute)">Informational only, not legal advice. DeadlineSF is not a law firm.</p></div></div></div></section>
 
 <section id="library"><div class="eyebrow">Law library · official sources</div><h2>47 AI laws, searchable.</h2>
 <div class="tools"><input id="q" type="search" placeholder="Search by bill, state or topic…" aria-label="Search laws"><div id="chips"></div></div>
@@ -91,6 +116,12 @@ const chk=[...document.querySelectorAll('#chk input')];chk.forEach(c=>c.onchange
 let g='all';const e=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 chips.innerHTML=['all',...G].map(x=>`<button class="chip${x==='all'?' on':''}" data-g="${x}">${x.replace(/-/g,' ')}</button>`).join('');
 chips.onclick=ev=>{const b=ev.target.closest('button');if(!b)return;g=b.dataset.g;chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b));draw()};
-function draw(){const s=q.value.toLowerCase();grid.innerHTML=L.filter(l=>(g==='all'||l.status_group===g)&&JSON.stringify(l).toLowerCase().includes(s)).map(l=>`<article class="law"><div class="num">${e(l.number)}</div><h3>${e(l.name)}</h3><div class="j">${e(l.jurisdiction)}</div><p>${e(l.plain_english||'')}</p><div class="st">${e(l.status)}</div>${l.official_source?`<a href="${e(l.official_source)}" rel="noopener" target="_blank" style="font:12px var(--mono);margin-top:10px">Official source →</a>`:''}</article>`).join('')||'<p>No matching laws.</p>'}
+function draw(){const s=q.value.toLowerCase();grid.innerHTML=L.filter(l=>(g==='all'||l.status_group===g)&&JSON.stringify(l).toLowerCase().includes(s)).map(l=>`<article class="law tilt"><div class="num">${e(l.number)}</div><h3>${e(l.name)}</h3><div class="j">${e(l.jurisdiction)}</div><p>${e(l.plain_english||'')}</p><div class="st">${e(l.status)}</div>${l.official_source?`<a href="${e(l.official_source)}" rel="noopener" target="_blank" style="font:12px var(--mono);margin-top:10px">Official source →</a>`:''}</article>`).join('')||'<p>No matching laws.</p>'}
 q.oninput=draw;draw();
+
+const bg=document.getElementById('burger'),mn=document.getElementById('menu'),ml=[...mn.querySelectorAll('a')];
+function setM(o){mn.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.style.overflow=o?'hidden':'';if(o)ml[0].focus();else bg.focus()}
+bg.onclick=()=>setM(!mn.classList.contains('open'));ml.forEach(a=>a.onclick=()=>setM(false));
+document.addEventListener('keydown',ev=>{if(!mn.classList.contains('open'))return;if(ev.key==='Escape')setM(false);if(ev.key==='Tab'){const f=[...ml,bg],i=f.indexOf(document.activeElement);ev.preventDefault();f[(i+(ev.shiftKey?-1:1)+f.length)%f.length].focus()}});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.addEventListener('mousemove',ev=>{const t=ev.target.closest&&ev.target.closest('.tilt');document.querySelectorAll('.tilt.on').forEach(x=>{if(x!==t){x.classList.remove('on');x.style.transform=''}});if(!t)return;const r=t.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;t.classList.add('on');t.style.transform=`perspective(900px) rotateX(${-y*10}deg) rotateY(${x*12}deg) translateZ(10px)`})}
 </script></body></html>
