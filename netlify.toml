@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "https://deadlinesf.net/:splat"
+  status = 301
+  force = true
